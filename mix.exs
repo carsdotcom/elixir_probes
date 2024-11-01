@@ -1,13 +1,21 @@
 defmodule ElixirProbes.MixProject do
   use Mix.Project
 
+  @name "ElixirProbes"
+  @version "0.1.0"
+  @source_url "https://github.com/carsdotcom/elixir_probes"
+
   def project do
     [
       app: :elixir_probes,
-      version: "0.1.0",
-      elixir: "~> 1.17",
+      deps: deps(),
+      description: description(),
+      elixir: "~> 1.14",
+      name: @name,
+      package: package(),
+      source_url: @source_url,
       start_permanent: Mix.env() == :prod,
-      deps: deps()
+      version: @version
     ]
   end
 
@@ -22,8 +30,18 @@ defmodule ElixirProbes.MixProject do
   defp deps do
     [
       {:plug, "~> 1.0"}
-      # {:dep_from_hexpm, "~> 0.3.0"},
-      # {:dep_from_git, git: "https://github.com/elixir-lang/my_dep.git", tag: "0.1.0"}
+    ]
+  end
+
+  defp description do
+    "Common probes for Elixir applications in Kubernetes deployments"
+  end
+
+  defp package do
+    [
+      name: "pacer",
+      licenses: ["Apache-2.0"],
+      links: %{"GitHub" => @source_url}
     ]
   end
 end
