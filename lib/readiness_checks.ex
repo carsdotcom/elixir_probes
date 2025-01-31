@@ -7,7 +7,7 @@ defmodule ElixirProbes.ReadinessChecks do
   def database_alive?(repo) do
     match?(
       {:ok, _},
-      repo.query("SELECT 42", [], timeout: 500)
+      repo.query("SELECT 42 -- from elixir_probes", [], timeout: 500)
     )
   end
 
